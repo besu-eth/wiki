@@ -1,0 +1,3 @@
+# Community
+
+This section of the wiki outlines the way the Besu community works and should operate, including best practices for support. This is different than governance, because it includes all Besu users and developers from solo devs to main contributors engaging with the community. Additionally, it outlines how our community may interface with other communities and how they can direct their users to us.
