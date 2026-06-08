@@ -15,6 +15,7 @@ Each wiki page is a Markdown file at the **repository root**. This matches how G
 | --- | --- |
 | `Home.md` | The wiki landing page and primary index. |
 | `_Sidebar.md` | Grouped navigation shown on every wiki page. |
+| `_Footer.md` | "This wiki is generated, edit the source repo" banner shown on every page. |
 | `About-This-Wiki.md` | What the wiki is, its Confluence origin, and how to continue the migration. |
 | `Contributing-First-Contribution.md` | Guide for first-time contributors to Besu. |
 | `Defect-Prioritization-Guide.md` | How defects are triaged and prioritized. |
@@ -98,7 +99,7 @@ As more pages are ported, keep them aligned with how GitHub wikis work:
 - **Flat namespace.** The wiki UI does not show folders; hierarchy lives in page names and in curated navigation.
 - **`Home.md`** is the landing page and top-level index.
 - **`_Sidebar.md`** provides grouped navigation shown on every page — this replaces Confluence's page tree. Keep it updated as pages are added.
-- **`_Footer.md`** (optional) shows license/community links on every page.
+- **`_Footer.md`** shows a banner on every page warning that the wiki is generated and manual edits are overwritten — since a GitHub wiki cannot be made read-only for collaborators.
 - **Spaces vs. hyphens:** GitHub maps `-` in filenames to spaces in titles, so prefer hyphenated names over literal spaces.
 
 ---
