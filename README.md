@@ -14,6 +14,7 @@ Each wiki page is a Markdown file at the **repository root**. This matches how G
 | File | Purpose |
 | --- | --- |
 | `Home.md` | The wiki landing page and primary index. |
+| `About-This-Wiki.md` | What the wiki is, its Confluence origin, and how to continue the migration. |
 | `Contributing-First-Contribution.md` | Guide for first-time contributors to Besu. |
 | `Defect-Prioritization-Guide.md` | How defects are triaged and prioritized. |
 | `Devnet-Testing-and-Tooling.md` | Devnet testing workflow and tooling. |
@@ -25,9 +26,7 @@ Each wiki page is a Markdown file at the **repository root**. This matches how G
 
 ### The `confluenceExport` branch — backup, not content
 
-Most of this wiki originated as a large export from a Confluence instance. That full, nested export is preserved on the [`confluenceExport`](https://github.com/besu-eth/wiki/tree/confluenceExport) branch as a **read-only backup**. `main` only contains pages that have been deliberately ported and cleaned up for the GitHub wiki.
-
-When a page still needs to be recovered from Confluence, pull it from that branch (see [Recovering content](#recovering-content-from-the-confluence-backup) below) — do not merge the branch wholesale.
+Most of this wiki originated as a large export from a Confluence instance. That full, nested export is preserved on the [`confluenceExport`](https://github.com/besu-eth/wiki/tree/confluenceExport) branch as a **read-only backup**; `main` only contains pages that have been deliberately ported and cleaned up. The origin story and step-by-step instructions for porting more pages live in the [About This Wiki](About-This-Wiki.md) page.
 
 ---
 
@@ -53,7 +52,7 @@ Deployment runs via the [GitHub Wiki Action](https://github.com/Andrew-Chen-Wang
 3. The workflow pushes the root Markdown pages to the `besu-eth/besu` wiki backend (`.wiki.git`). Repo metadata (`README.md`, `LICENSE`, `.gitignore`, `.github/`) is ignored and never published.
 4. GitHub renders the wiki and it becomes immediately visible to end users.
 
-> **One-time setup:** because the workflow pushes to a *different* repo's wiki, the default `GITHUB_TOKEN` is not sufficient. Create a Personal Access Token with push access to the `besu-eth/besu` wiki and add it to this repo's secrets as `WIKI_PUBLISH_TOKEN`. See the header comment in the workflow file for details.
+> **One-time setup:** because the workflow pushes to a *different* repo's wiki, the default `GITHUB_TOKEN` is not sufficient. Create a Personal Access Token with push access to the `besu-eth/besu` wiki — a fine-grained PAT scoped to `besu-eth/besu` with **Contents: Read and write** (or a classic token with `public_repo`) — and add it as `WIKI_PUBLISH_TOKEN` under the **`Production` environment** (Settings → Environments → Production), not as a plain repo secret. The publish job is bound to that environment. See the header comment in the workflow file for details.
 
 ---
 
@@ -87,19 +86,7 @@ We use a **feature-branch + pull-request** workflow. Direct pushes to `main` are
 - **Internal links** use bare page names (no `.md`, no leading slash) so they resolve in the rendered wiki.
 - **Flag unfinished ports** with an inline `<!-- TODO -->` when a page links to something not yet migrated (see the `Contributing-Code-Reviews` reference in the First Contribution page).
 
-### Recovering content from the Confluence backup
-
-The original Confluence export lives on the `confluenceExport` branch. To port a page from it:
-
-```bash
-# See what exists in the backup
-git ls-tree -r --name-only confluenceExport -- besu/
-
-# Pull a single file out of the backup onto your working branch
-git checkout confluenceExport -- besu/path/to/page.md
-```
-
-Then move/rename it to a flat root-level wiki page, clean up Confluence artifacts (leftover macros, broken `lf-hyperledger.atlassian.net` links, "export flag not set" boilerplate), fix cross-links, and commit it on your feature branch.
+> **Porting a page from the Confluence backup?** The origin story and step-by-step recovery instructions live in [About This Wiki](About-This-Wiki.md).
 
 ---
 
