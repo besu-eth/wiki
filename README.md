@@ -14,6 +14,7 @@ Each wiki page is a Markdown file at the **repository root**. This matches how G
 | File | Purpose |
 | --- | --- |
 | `Home.md` | The wiki landing page and primary index. |
+| `_Sidebar.md` | Grouped navigation shown on every wiki page. |
 | `About-This-Wiki.md` | What the wiki is, its Confluence origin, and how to continue the migration. |
 | `Contributing-First-Contribution.md` | Guide for first-time contributors to Besu. |
 | `Defect-Prioritization-Guide.md` | How defects are triaged and prioritized. |
@@ -76,7 +77,7 @@ We use a **feature-branch + pull-request** workflow. Direct pushes to `main` are
    ```
 2. **Edit or add a page** at the repo root. Use standard GitHub-Flavored Markdown, one topic per page.
 3. **Name files for the wiki.** The filename becomes the page title and URL; use `Hyphen-Separated-Words.md`. Encode any grouping in the name (e.g. `Contributing-First-Contribution.md`).
-4. **Link between pages** using the target page's name without the extension, e.g. `[First Contribution](Contributing-First-Contribution)`. Update `Home.md` (and the sidebar, once one exists) to surface new pages.
+4. **Link between pages** using the target page's name without the extension, e.g. `[First Contribution](Contributing-First-Contribution)`. Add new pages to `_Sidebar.md` (and `Home.md` where appropriate) so they're discoverable.
 5. **Open a PR** against `main` with a clear description.
 6. **Review & merge.** Once merged, the publish workflow updates the live wiki automatically.
 
@@ -96,7 +97,7 @@ As more pages are ported, keep them aligned with how GitHub wikis work:
 
 - **Flat namespace.** The wiki UI does not show folders; hierarchy lives in page names and in curated navigation.
 - **`Home.md`** is the landing page and top-level index.
-- **`_Sidebar.md`** (recommended next step) provides grouped navigation shown on every page — this replaces Confluence's page tree.
+- **`_Sidebar.md`** provides grouped navigation shown on every page — this replaces Confluence's page tree. Keep it updated as pages are added.
 - **`_Footer.md`** (optional) shows license/community links on every page.
 - **Spaces vs. hyphens:** GitHub maps `-` in filenames to spaces in titles, so prefer hyphenated names over literal spaces.
 

@@ -33,6 +33,6 @@ To port another page out of the Confluence backup:
 3. **Move and rename** it to a flat, root-level wiki page using `Hyphen-Separated-Words.md` — the filename becomes the page title (e.g. `Working-through-Hive-tests.md` → "Working through Hive tests").
 4. **Clean up Confluence artifacts:** leftover macros, broken `lf-hyperledger.atlassian.net` links, and "export flag not set" boilerplate.
 5. **Fix cross-links** to use bare page names, e.g. `[First Contribution](Contributing-First-Contribution)` (no `.md`, no leading slash).
-6. **Surface the page** by linking it from [Home](Home) (and the sidebar, once one exists), then open a PR.
+6. **Surface the page** by adding it to `_Sidebar.md` (and linking from [Home](Home) where appropriate), then open a PR.
 
 When a ported page links to something not yet migrated, leave an inline `<!-- TODO -->` marking it (see the `Contributing-Code-Reviews` reference in [First Contribution](Contributing-First-Contribution)).
