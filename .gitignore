@@ -1,0 +1,5 @@
+# Local clone of the rendered wiki (build artifact, published by CI — not source)
+besu.wiki/
+
+# macOS
+.DS_Store

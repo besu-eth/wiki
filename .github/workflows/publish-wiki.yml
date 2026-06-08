@@ -1,0 +1,57 @@
+name: Publish wiki
+
+# Publishes the wiki content in this repo to the rendered GitHub wiki at
+# besu-eth/besu.wiki on every merge to main. The rendered wiki is a build
+# artifact — never edit it directly; edit the source here and let this run.
+#
+# Setup required once:
+#   1. Create a Personal Access Token (classic, `repo` scope — or a fine-grained
+#      token with "Contents: read/write" on besu-eth/besu) that can push to the
+#      besu-eth/besu wiki backend.
+#   2. Add it to this repo's secrets as WIKI_PUBLISH_TOKEN.
+#      (The default GITHUB_TOKEN cannot push to a *different* repo's wiki.)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - '.github/workflows/publish-wiki.yml'
+  # Allow manual republish from the Actions tab.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Avoid concurrent pushes to the wiki clobbering each other.
+concurrency:
+  group: publish-wiki
+  cancel-in-progress: false
+
+jobs:
+  publish-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Publish to besu-eth/besu wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v5
+        with:
+          # Wiki pages live at the repo root, so publish from there.
+          path: .
+          # Target repo whose .wiki.git backend we push to.
+          repository: besu-eth/besu
+          # PAT with push access to the target wiki (see header note).
+          token: ${{ secrets.WIKI_PUBLISH_TOKEN }}
+          commit-message: "Publish wiki from ${{ github.repository }}@${{ github.sha }}"
+          # Don't create empty commits when nothing changed.
+          disable-empty-commits: true
+          # Repo metadata is not wiki content — keep it out of the published wiki.
+          # (preprocess off so our README stays a README and does not become Home.)
+          preprocess: false
+          ignore: |
+            README.md
+            LICENSE
+            .gitignore
+            .github/**
