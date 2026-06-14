@@ -23,10 +23,7 @@ Issues seen before now when Bonsai and/or snap-sync is used with QBFT:
 - [https://github.com/hyperledger/besu/issues/6680](https://github.com/hyperledger/besu/issues/6680)
 - [https://github.com/hyperledger/besu/issues/6053](https://github.com/hyperledger/besu/issues/6053)
 
-For those working on this feature, a `4-validator-dir.tar.gz` test fixture can be used to run a 4-validator QBFT chain for testing. The 4th node has `Xsynchronizer-world-state-request-parallelism=1` set; without this, the account data range requests fail to all be marked as complete.
-
-> [!NOTE]
-> The `4-validator-dir.tar.gz` fixture is not included in this wiki. It remains available in the `confluenceExport` branch under `besu/performance-stability/permissioned-chain-performance-testing/attachments/`.
+For those working on this feature, a [`4-validator-dir.tar.gz`](assets/4-validator-dir.tar.gz) test fixture can be used to run a 4-validator QBFT chain for testing. The 4th node has `Xsynchronizer-world-state-request-parallelism=1` set; without this, the account data range requests fail to all be marked as complete.
 
 ## QBFT Performance
 
