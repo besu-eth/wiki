@@ -20,7 +20,7 @@
 
 ## Introduction
 
-Operating as an execution layer (EL) client, Besu is responsible for validating and executing each block sent by the consensus layer (CL) client every Slot (12 seconds). Fast and effective block execution and validation are key roles of an EL. Moreover, there's a window of 1/3 * SECONDS_PER_SLOT (4 seconds) at the start of each slot for each validator to offer their local chain perspective, and [attest](https://besu.hyperledger.org/23.4.0/public-networks/concepts/proof-of-stake/attestations), once per Epoch (6.4 minutes). In essence, the validating node (CL+EL) has a 4-second interval from the slot's beginning to receive the block (gossip time), validate and execute each separate transaction on the EL, and confirm the correct head on the CL side. As such, the faster the EL can execute the block, the better, since some blocks may arrive late, even after 3.5 seconds from the slot's start, requiring the EL to execute the block as quickly as possible to earn the full attestation reward. It's important to highlight that about 85% of validators' rewards come from making attestations. With these considerations in mind, this article will focus on Besu's improvements to block processing performance.
+Operating as an execution layer (EL) client, Besu is responsible for validating and executing each block sent by the consensus layer (CL) client every Slot (12 seconds). Fast and effective block execution and validation are key roles of an EL. Moreover, there's a window of 1/3 * SECONDS_PER_SLOT (4 seconds) at the start of each slot for each validator to offer their local chain perspective, and [attest](https://docs.besu-eth.org/23.4.0/public-networks/concepts/proof-of-stake/attestations), once per Epoch (6.4 minutes). In essence, the validating node (CL+EL) has a 4-second interval from the slot's beginning to receive the block (gossip time), validate and execute each separate transaction on the EL, and confirm the correct head on the CL side. As such, the faster the EL can execute the block, the better, since some blocks may arrive late, even after 3.5 seconds from the slot's start, requiring the EL to execute the block as quickly as possible to earn the full attestation reward. It's important to highlight that about 85% of validators' rewards come from making attestations. With these considerations in mind, this article will focus on Besu's improvements to block processing performance.
 
 We're eager to share that since the merge in September 2022, Besu team improved Block processing performance by **three times** reaching a **95th percentile around 250 ms and 99th percentile around 500 ms** on a solo staking hardware machine (AMD Ryzen 5 5600G, 32 GB DDR4 3200MHz, 2TB WD Black SN850 NVMe).
 
@@ -78,7 +78,7 @@ Post-merge, the most time-consuming components in transaction processing were th
 
 #### SLOAD operation improvements
 
-One of the biggest improvements on SLOAD operation was the implementation of the [healing mechanism of the Bonsai flat database](https://hackmd.io/@kt2am/ryrH0APG6) on accounts and storage. [Bonsai](https://besu.hyperledger.org/23.10.2/public-networks/concepts/data-storage-formats#bonsai-tries) is a feature in the Besu Ethereum client that operates with both a flat database and a trie structure simultaneously. This unique combination allows for faster and more efficient SLOAD operations.
+One of the biggest improvements on SLOAD operation was the implementation of the [healing mechanism of the Bonsai flat database](https://hackmd.io/@kt2am/ryrH0APG6) on accounts and storage. [Bonsai](https://docs.besu-eth.org/23.10.2/public-networks/concepts/data-storage-formats#bonsai-tries) is a feature in the Besu Ethereum client that operates with both a flat database and a trie structure simultaneously. This unique combination allows for faster and more efficient SLOAD operations.
 
 In a traditional trie structure, the accounts and slots are located at the bottom of the trie (leaf). To find a specific account or slot, you have to go through the entire trie. Every time we go through a node in the trie, it corresponds to a read operation in the database. The deeper the information is in the trie, the more reads are needed, which can slow down the operation.
 
@@ -180,7 +180,7 @@ Here is the Besu configuration recommended for a solo staker:
 - Enable the high spec flag if your machine has more than 16 GiB RAM `--Xplugin-rocksdb-high-spec-enabled`
 - Install [Jemalloc](https://github.com/jemalloc/jemalloc/blob/dev/INSTALL.md) to replace the default system allocator (malloc). Besu will automatically detect if it is installed and preloaded as the system memory allocator.
 
-If you need to troubleshoot performance, [check out our documentation here](https://besu.hyperledger.org/public-networks/how-to/troubleshoot/performance).
+If you need to troubleshoot performance, [check out our documentation here](https://docs.besu-eth.org/public-networks/how-to/troubleshoot/performance).
 
 Here are some other best practices:
 
