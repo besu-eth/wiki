@@ -1,8 +1,5 @@
 # Project Badge Status
 
-> [!NOTE]
-> This page is a historical snapshot from Besu's Hyperledger-era governance and infrastructure context.
-
 ## Legal
 
 A license check is performed as a part of each build. (Here's [one from 22 Jun 2021](https://app.circleci.com/pipelines/github/hyperledger/besu/9382/workflows/c7effe7e-5ea3-4c69-85fb-1b9cb6573c5e/jobs/49241/steps?invite=true#step-109-20)).  If any dependency reports a license from anything other than the [permitted list](https://github.com/hyperledger/besu/blob/master/gradle/check-licenses.gradle#L32) a build error occurs and the distribution is not generated.
