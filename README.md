@@ -11,6 +11,8 @@ This repository (`besu-eth/wiki`) is the **source of truth** for the [Besu proje
 
 Each wiki page is a Markdown file at the **repository root**. This matches how GitHub renders a wiki: the page namespace is flat, and the filename *is* the page title (hyphens render as spaces, e.g. `Working-through-Hive-tests.md` → "Working through Hive tests").
 
+The table below highlights key files and naming patterns (it is **not** exhaustive):
+
 | File | Purpose |
 | --- | --- |
 | `Home.md` | The wiki landing page and primary index. |
@@ -20,9 +22,12 @@ Each wiki page is a Markdown file at the **repository root**. This matches how G
 | `Contributing-First-Contribution.md` | Guide for first-time contributors to Besu. |
 | `Defect-Prioritization-Guide.md` | How defects are triaged and prioritized. |
 | `Devnet-Testing-and-Tooling.md` | Devnet testing workflow and tooling. |
+| `Working-through-Hive-tests.md` | Working with the Hive test suite. |
 | `EPF-project-ideas.md` | Ethereum Protocol Fellowship project ideas. |
 | `LFDT-mentorship-project-ideas.md` | LFDT mentorship project ideas. |
-| `Working-through-Hive-tests.md` | Working with the Hive test suite. |
+| `Performance-Stability-*.md` | Performance and stability reports, investigations, and post-merge analysis pages. |
+| `Incident-Reports.md` + `Incident-Report-*.md` | Incident index page plus dated incident reports. |
+| `assets/*` | Images and downloadable artifacts referenced by wiki pages. |
 | `.github/workflows/publish-wiki.yml` | CI that publishes this content to the rendered wiki. |
 | `LICENSE` | Apache 2.0. |
 

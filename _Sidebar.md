@@ -17,6 +17,14 @@
 
 - [Defect Prioritization Guide](Defect-Prioritization-Guide)
 
+**Incident Reports**
+
+- [2024-01-06 Mainnet Halting Event](Incident-Report-2024-01-06-Mainnet-Halting-Event)
+- [2022-11-11 Fork on Sepolia](Incident-Report-2022-11-11-Fork-on-Sepolia)
+- [2022-05-30 Phishing PRs](Incident-Report-2022-05-30-Phishing-PRs)
+- [2021-08-04 Value Transfer Public Transactions Rejected](Incident-Report-2021-08-04-Value-Transfer-Public-Transactions-Rejected)
+- [2021-04-23 ATs Failures](Incident-Report-2021-04-23-ATs-Failures)
+
 **Performance & Stability**
 
 - [Improvements Since the Merge](Performance-Stability-2024-Improvements-Since-the-Merge)
