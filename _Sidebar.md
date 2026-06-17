@@ -13,6 +13,14 @@
 - [Devnet Testing and Tooling](Devnet-Testing-and-Tooling)
 - [Working through Hive Tests](Working-through-Hive-tests)
 
+**Developing & Conventions**
+
+- [Developing and Conventions](Developing-and-Conventions)
+- [Besu CLI Style Guide](Developing-and-Conventions-Besu-CLI-Style-Guide)
+- [Testing](Developing-and-Conventions-Testing)
+- [Logging](Developing-and-Conventions-Logging)
+- [Building from source](Developing-and-Conventions-Building-from-Source)
+
 **Project Process**
 
 - [Defect Prioritization Guide](Defect-Prioritization-Guide)
