@@ -6,5 +6,4 @@ Besu is led by a set of [maintainers](https://github.com/besu-eth/besu/blob/main
 
 ## Governance references
 
-- [Active Status Proposal (Historical, Hyperledger era)](Governance-Besu-Active-Status-Proposal-Historical)
-- [Project Badge Status (Historical, Hyperledger era)](Governance-Project-Badge-Status)
+- [Project Badge Status](Governance-Project-Badge-Status)

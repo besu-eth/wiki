@@ -1,35 +1,49 @@
 # Project Badge Status
 
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/3174/badge)](https://www.bestpractices.dev/projects/3174)
+
 ## Legal
 
-A license check is performed as a part of each build. (Here's [one from 22 Jun 2021](https://app.circleci.com/pipelines/github/hyperledger/besu/9382/workflows/c7effe7e-5ea3-4c69-85fb-1b9cb6573c5e/jobs/49241/steps?invite=true#step-109-20)).  If any dependency reports a license from anything other than the [permitted list](https://github.com/hyperledger/besu/blob/master/gradle/check-licenses.gradle#L32) a build error occurs and the distribution is not generated.
+A dependency license check runs as part of every build. In CI, the `checkLicense` Gradle
+task runs on each pull request, and the rest of the pipeline depends on it passing.
+If any dependency reports a license that isn't on the permitted list in
+[`gradle/allowed-licenses.json`](https://github.com/besu-eth/besu/blob/main/gradle/allowed-licenses.json), the
+`checkLicense` task fails and the build does not pass.
+A dependency license report is also bundled into the distribution as **license-dependency.html**.
 
-## Decentralized
+## Contributors
 
-[LFX Analytics Report](https://tinyurl.com/yht3mfkz)
+Besu is open source (Apache 2.0) and developed in the open at
+[github.com/besu-eth/besu](https://github.com/besu-eth/besu), with contributions
+from maintainers, independent developers, and several organizations.
 
-Just under a quarter of all contributions come from outside Consensys Quorum (Protocols, formerly known as PegaSys, was merged with Consensys Quorum)
-
-The top committing maintainer from each company over the last year:
-
-- Consensys - Sally MacFarlane
-- Splunk - Antoine Tolume
-- Chainsafe - Edward Mack
-- <No Affiliation> - Danno Ferrin
-
-Hyperledger Besu is critical infrastructure for both Consensys and the Ethereum Classic Cooperative, who both are committed to maintain the project for the Ethereum Mainnet and Ethereum Classic chains respectively. Both companies would independently maintain the project if required. 
+The majority of contributions currently come from Consensys, with additional
+contributions from the wider community. For an up-to-date breakdown of
+contributors, organizations, and activity, see the
+[LFX Insights dashboard for Besu](https://insights.linuxfoundation.org/project/besu/contributors).
 
 ## Release
 
-Hyperledger Besu maintains a roughly bi-weekly release schedule with roughly quarterly to three-times a year major releases cycles.
+Besu follows a CalVer versioning scheme (`YY.M.minor`) and ships a new release
+roughly once a month, with release candidates published in the weeks beforehand.
+Additional releases are made as needed to align with Ethereum network upgrades.
+All releases are published in the
+[Besu GitHub repository](https://github.com/besu-eth/besu/releases).
 
-All releases can be seen in the [Besu Github Repo](https://github.com/hyperledger/besu/releases), and [future anticipated release dates in the Wiki](https://lf-hyperledger.atlassian.net/wiki/display/BESU/Future+Release+Dates).
-
-Besu's [roadmap](https://lf-hyperledger.atlassian.net/wiki/display/BESU/Roadmap) is mostly driven by two external concerns: the Enterprise Ethereum Alliance specification and Ethereum Mainnet hard-forks (and to a lesser extent Ethereum Classic, which *mostly* aligns with Ethereum Mainnet)
+Besu's roadmap is driven primarily by Ethereum Mainnet hard forks. Out of the box
+it can also sync several other networks selectable via `--network`, including
+Ethereum test networks and other EVM networks such as Linea.
 
 ## Testing
 
-Besu has robust [unit](https://app.circleci.com/pipelines/github/hyperledger/besu/9386/workflows/0cb3febf-3459-45e5-949c-a8f01586db7e/jobs/49271), [integration](https://app.circleci.com/pipelines/github/hyperledger/besu/9386/workflows/0cb3febf-3459-45e5-949c-a8f01586db7e/jobs/49276), and [acceptance](https://app.circleci.com/pipelines/github/hyperledger/besu/9386/workflows/0cb3febf-3459-45e5-949c-a8f01586db7e/jobs/49272) [tests](https://app.circleci.com/pipelines/github/hyperledger/besu/9386/workflows/0cb3febf-3459-45e5-949c-a8f01586db7e/jobs/49275) run with each main branch build that validate Besu behaves as expected, as well as [reference tests](https://app.circleci.com/pipelines/github/hyperledger/besu/9386/workflows/0cb3febf-3459-45e5-949c-a8f01586db7e/jobs/49270) maintained by Ethereum core developers to check for mainnet standards compliance. These are run as part of every commit and often do catch unintended behavior changes.
+Besu has a robust automated test suite, including unit, integration, and acceptance tests
+that validate Besu behaves as expected, plus reference tests maintained by
+Ethereum core developers to check Mainnet standards compliance. These run in CI
+(GitHub Actions) on every pull request and in the merge queue before changes are
+merged to `main`.
+
+See the workflow runs in the
+[Besu GitHub Actions tab](https://github.com/besu-eth/besu/actions).
 
 ## Documentation
 
@@ -37,14 +51,28 @@ Besu maintains a [documentation site](https://docs.besu-eth.org/) created using 
 
 ## Alignment
 
-The [Besu main wiki page](https://lf-hyperledger.atlassian.net/wiki/display/BESU/Hyperledger+Besu) lists the main use cases and specific features.
+The [Besu main wiki page](Home) lists the main use cases and specific features.
 
-As a standard Ethereum client, Hyperledger Besu interacts with all other Hyperledger projects that interface with Ethereum, specifically Avalon, Cactus, and Caliper. Besu also works with a number of Labs projects, such as Firefly, Blockchain Automation Framework, and Yui.
+As a standard Ethereum client, Besu interacts with all other Linux Foundation
+Decentralized Trust (LF Decentralized Trust) projects that interface with
+Ethereum, specifically Avalon, Cactus, and Caliper. Besu also works with a
+number of Labs projects, such as Firefly, Blockchain Automation Framework, and
+Yui.
 
 ## Infrastructure
 
-Hyperledger Besu is fully hosted on Hyperledger Infrastructure: [GitHub](https://github.com/hyperledger/besu) for source control, [Discord](https://discord.gg/hyperledger) for Chat, [Hyperledger email list](https://lists.hyperledger.org/g/besu/topics) (although Discord is the dominant communication channel), builds and release are run on [CircleCI](https://app.circleci.com/pipelines/github/hyperledger/besu), and [repolinter](https://github.com/hyperledger/besu/actions/runs/961385130) verifying conformance to the common repository structure.
+## Infrastructure
+
+Besu is a LF Decentralized Trust project, developed in the open on GitHub at
+[github.com/besu-eth/besu](https://github.com/besu-eth/besu) for source control.
+Community discussion happens primarily on the Hyperledger
+[Discord](https://discord.com/invite/hyperledger). Builds, tests, and releases run
+on **GitHub Actions** (see the
+[workflows](https://github.com/besu-eth/besu/tree/main/.github/workflows) and the
+[Actions tab](https://github.com/besu-eth/besu/actions)), which also runs
+[repolinter](https://github.com/todogroup/repolinter) to verify the repository
+conforms to the common repository structure.
 
 ## CII
 
-The most recent [CII report for Hyperledger Besu](https://bestpractices.coreinfrastructure.org/en/projects/3174).
+The most recent [CII report for Besu](https://bestpractices.coreinfrastructure.org/en/projects/3174).

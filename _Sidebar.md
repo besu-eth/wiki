@@ -20,8 +20,7 @@
 **Governance**
 
 - [Governance](Governance)
-- [Active Status Proposal (Historical)](Governance-Besu-Active-Status-Proposal-Historical)
-- [Project Badge Status (Historical)](Governance-Project-Badge-Status)
+- [Project Badge Status](Governance-Project-Badge-Status)
 
 **Incident Reports**
 
