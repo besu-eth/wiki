@@ -4,6 +4,10 @@ Welcome to the besu wiki!
 
 - [First Contribution](Contributing-First-Contribution)
 
+## Design Documents
+
+- [Design Documents](Design-Documents)
+
 ## Project Process
 
 - [Incident Reports](Incident-Reports)
