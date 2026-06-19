@@ -1,6 +1,6 @@
 # Bonsai Tries Design Overview
 
-This design overview is currently speculative; the actual implementation may vary.
+This page captures the original conceptual design of Bonsai Tries. Bonsai is now the default storage format in Besu, so some details may differ from the shipped implementation, but the page remains a useful overview of the model and the reasoning behind it.
 
 Bonsai Tries is the storage methodology for Besu, storing both account and storage values. It is a philosophical shift from the former "Forest of Tries" storage format of the initial versions of Besu.
 

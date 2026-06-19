@@ -37,22 +37,17 @@
 **Design Documents**
 
 - [Design Documents](Design-Documents)
-- [Besu 2022 Vision](Design-Documents-Besu-2022-Vision)
 - [Modular Besu](Design-Documents-Modular-Besu)
 - [Refactor EVM into a Standalone Library](Design-Documents-Refactor-EVM-into-a-Standalone-Library)
 - [Bonsai Tries Design Overview](Design-Documents-Bonsai-Tries-Design-Overview)
 - [Bonsai Archive Feature](Design-Documents-Bonsai-Archive-Feature)
 - [Bonsai Archive State Proofs](Design-Documents-Bonsai-Archive-State-Proofs)
 - [Switchable Consensus Parameters](Design-Documents-Switchable-Consensus-Parameters)
-- [Change to Besu Defaults - Q1 2024](Design-Documents-Change-to-Besu-Defaults-Q1-2024)
-- [Ethereum Classic Support](Design-Documents-Ethereum-Classic-Support)
 - [SECP256R1 Support](Design-Documents-SECP256R1-Support)
 - [RPC Endpoint Service](Design-Documents-RPC-Endpoint-Service)
-- [Pico CLI Plugin Integration (DRAFT)](Design-Documents-Pico-CLI-Plugin-Integration)
 - [Feature Proposal Template](Design-Documents-Feature-Proposal-Template)
 - [Feature Flags](Design-Documents-Feature-Flags)
 - [CI/CD Tooling and Process](Design-Documents-CICD-Tooling-and-Process)
-- [CI/CD Migration](Design-Documents-CICD-Migration)
 
 **Programs & Mentorship**
 

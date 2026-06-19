@@ -1,8 +1,5 @@
 # Modular Besu
 
-> [!NOTE]
-> This page consolidates the Modular Besu design discussion and its sub-pages (Modularity Implementation Approach, Modular Consensus, Besu Software Component Map, and the original "Besu as a Modular Client for the Merge"). It is a historical record of design thinking around making Besu more modular.
-
 Modularization of Besu - can we make Besu more flexible by factoring it into decoupled components which can be exchanged for alternate implementations?
 
 **Goal of this document:**
@@ -12,20 +9,19 @@ Modularization of Besu - can we make Besu more flexible by factoring it into dec
 
 ## On this page
 
-This is a long, consolidated page. It opens with the overall modularity discussion ([context](#general-context), [goals](#goals), [potential benefits](#potential-benefits), [concerns and mitigations](#general-concerns-and-challenges-possible-mitigations), [minimum useful components](#besu-minimum-useful-components), [first steps](#potential-first-steps), and the [Erigon meeting debrief](#debrief-of-meeting-with-erigon)), and then merges four related sub-topics:
+This page opens with the overall modularity discussion ([context](#general-context), [goals](#goals), [potential benefits](#potential-benefits), [concerns and mitigations](#general-concerns-and-challenges-possible-mitigations), [minimum useful components](#besu-minimum-useful-components), and [first steps](#potential-first-steps)), and then discusses related sub-topics:
 
 - [Modularity Implementation Approach](#modularity-implementation-approach) - how modules are divided into business logic vs. cross-cutting concerns, and a proposed proof-of-concept.
 - [Modular Consensus](#modular-consensus) - a preliminary approach to modularizing consensus (BFT) via the plug-in system.
 - [Besu Software Component Map (DRAFT)](#besu-software-component-map-draft) - a tour of how the Besu codebase is organized into Gradle projects.
-- [Besu as a Modular Client for the Merge (OLD)](#besu-as-a-modular-client-for-the-merge-old) - an older comparison of two approaches to a lean execution-engine client.
 
-## General context
+### General context
 
 We are getting various signals that the future of blockchain technologies is all about modularity. If L2 chains on top of L1 chains are the future, how can we make an L1 client that can be composed from various implementations of sub-components? We also see evidence of this elsewhere - The Merge separated consensus from execution. MEV actors like Flashbots separate proposing a block from building it. Even within clients, we see teams like Erigon re-writing their client in different languages, and combining the best performing subcomponents regardless of language.
 
 Apart from the general direction of blockchain, software has been trending away from monolithic implementations, in order to maximize developer efficiency and reduce change fatigue. Smaller components can reach stability more easily than large monoliths can.
 
-## Goals
+### Goals
 
 The goals of this work are to expand the contexts in which Besu can be valuable to users and operators while reducing tech debt in maintenance of the code base and its release process. New use-cases require client modification (customization of Besu's rules). New use-cases may also want some, but not all, of the functionality that Besu provides. These use-cases may also want an easy way to package and distribute their work with Besu's permissive licensing.
 
@@ -45,7 +41,7 @@ The modularity work can be largely set against three goals:
 
 The latter two goals are somewhat linked. Distributions can be tackled with any client modification approach. APIs vs. modules, however, should be considered as differing tracks.
 
-## Potential Benefits
+### Potential Benefits
 
 With the above in mind, we outline some potential benefits:
 
@@ -59,7 +55,7 @@ With the above in mind, we outline some potential benefits:
    1. Client modification can be done easily by swapping or altering components. Altered components are Besu at their core, but the plug-in system changes their behavior. Modular components may be Besu components or completely novel components that work with Besu via documented interfaces (i.e. a Rust EVM).
 5. Reduces cognitive complexity - better defined scope for contributors to target a specific part of the codebase. New developers can focus more narrowly, and get up to speed faster with fewer distractions.
 
-## General Concerns and Challenges, Possible Mitigations
+### General Concerns and Challenges, Possible Mitigations
 
 1. Engineering effort around Besu
    1. Large engineering effort - we will need to always prefer incremental delivery over greenfield or big-bang approaches.
@@ -74,90 +70,28 @@ With the above in mind, we outline some potential benefits:
       3. Infrastructure providers
       4. Developers
 
-## Besu Minimum Useful Components
+### Besu Minimum Useful Components
 
 Hypothetical situations that would benefit from component composition:
 
-- Isolatable execution engine (see [Approach #2 below](#approach-2-an-execution-engine-shell-project)).
+- Isolatable execution engine.
   - EVM and state are needed and not the Consensus. Ex: Rollups, Hedera Hashgraph, EVM testing tools.
 - Transaction pool, transaction validation, and block gossip needed. MEV searchers.
   - Possibly EVM needed for gas use analysis.
-- Use case specific builds (see [Approach #1 below](#approach-1-besu-as-debian)).
+- Use case specific builds.
   - All-in-one mainnet client that provides Ethereum proof-of-stake as its only consensus mechanism.
 - State Sync Testbed, rapid prototyping for data stores which can be populated with state changes from a moving chain.
 
-## Potential First Steps
+### Potential First Steps
 
 - [Catalog all components](#modularity-implementation-approach).
 - Test approach on one or more situations listed above.
 - Extrapolate out a rough timeline on MVP scope and modules timing vs the catalog.
 - Scope MVP (minimum viable platform).
 
-## Questions
+### Questions
 
 1. Plug-ins vs. modules - will we expand the plug-in API to be unwieldy and exposing too much?
-
-## Debrief of meeting with Erigon
-
-**Meeting #1 - 9/14/21**
-
-Participants: Alexey, Madeline, Sajida
-
-- Sentry component.
-- C++ and rust implementations are being done.
-- Each reimplementation takes less time than the precedent.
-- Contrary to popular belief, it's not hard to rewrite things from scratch. Might even be easier.
-- Alexey wants to start a Java reimplementation, and they don't have anyone to do it in Java.
-- Besu in 2/3 years - he sees a dead end for the monolith model like besu, nethermind, openE.
-- Geth snapshotter; Geth realised that traversing the tree.
-- Collaboration would be:
-  - Join their family of products.
-  - Reimplement core product like evm.
-  - Make them compatible with their other components.
-  - That will be a 4th compatible implementation to their portfolio.
-- Erigon is funded by EF, Gnosis and a small amount from various orgs.
-- They are hiring for the go implementation; they have 2 active devs, they might bring a couple of others - it is a small team.
-- C++ team: 4/5 ppl.
-- Rust team: 2.5 ppl, some of them are not employed but just contributing part time.
-- Cycles of modularization:
-  - 1st rewrite: 2017 - 4 years or 3.5 years.
-  - 2nd rewrite May 2020 - C++ with a couple of ppl; now they are almost finished the core component (1.5 years), might get the core component roughly finished end of 2021.
-  - 3rd rewrite Jan 2021 - rust, could get to the same level as the others by the end of 2021, so 1 year; Rust will be ahead of the C++ implementation.
-- He predicts that with Besu in 6 months because we already have a codebase, we don't start from scratch.
-- Should we join the effort? Should we invest in Erigon?
-
-**Meeting #2 - 10/6/21**
-
-Participants: Artem +1, Gary, Sajida
-
-- Starting from scratch is easier than refactoring existing code into Erigon architecture.
-- Artem used to work on OE and is now working on Akula (rust) mainly alone for 4 months and it's already passing consensus.
-- Modularization:
-  - Breaking the monolith - reusable parts: tx pool, consensus engine, sync module.
-  - Sync module is interesting alone to process by block or by stage.
-  - Might require a change of database; stage sync requires MVCC database (LMDB, Badger LSM based, B+).
-  - It might be possible to start module by module.
-  - Data model could be a good start (might reduce space consumption).
-  - We already have a pluggable storage engine. The interface of the pluggable storage resembles MDB/LMDB/DBX. The peer-2-peer part (sentry) of Geth was re-used by Erigon but the plumbing is totally different.
-  - Erigon is heavily optimized toward sequential writes. Random reads / sequential writes - very fast for MDBX.
-  - EVM bug leveraging a hole in the memory as triggered by a tx, that was broadcasted everywhere and affected all clients (even on Binance smart chain) - spreads like wildfire.
-  - If they have a clique ethereum, fork the module, modify it and connect to JRPC and connect the rest of Erigon. You just had to invest time in creating a module and you get the rest of the client for free.
-  - Erigon can be run as a Kubernetes cluster.
-- Transaction pool should get EVM inside and be able to be part of the consensus. It is a security parameter. If we have a DOS attack, the tx pool should guard the blockchain from an attack. Having multiple tx pools that could coexist: one for MEV, one maybe getting DOS in this scenario and one running smoothly. And then you can pick the one that can do the work. Any tx pool could go down while the node is still up.
-- The idea of modularity: you make the core, the spec, and the rest is up to you.
-- Andrew: maintainer of the yellow paper, has an enum that maps to yellow paper parts. He runs silkworm - very good resource to start the work.
-- Estimation: 2 engineers in 4 months. (Artem did it alone in 3/4 months.)
-- R&D type of work, 100% dedicated team; no mainnet work.
-- [Silkworm and Akula: the future of Erigon](https://medium.com/@giulio.rebuffo/silkworm-and-akula-the-future-of-erigon-fda4d6813505).
-- Staged sync: [erigon staged sync README](https://github.com/ledgerwatch/erigon/blob/devel/eth/stagedsync/README.md).
-  - Download headers/download blocks: 2 first stages, then silkworm will run the blocks.
-- Leading C++ implementation at this point: [Silkworm](https://github.com/torquem-ch/silkworm).
-- Very fruitful to invest R&D in this because lots of work has been done, so the cycle of reimplementation is getting smaller.
-- Refactor: use case → modularity for L2, rollups, pluggable, MEV.
-- Argument:
-  - Database - we (besu) have a trie in a trie MPT (access complexity is multiplied). So just switching to another data model would increase our performance.
-  - Erigon threw out the MPT (merkle patricia trie) completely and computes state root post execution; other than that we have a flat state. Plain state table: value = account, key = account address. We are almost there with bonsai on the flat storage but we should work on simplifying.
-  - Using JRPC sure adds communication overhead but it brings so much value in other places that they (Erigon) can live with it.
 
 ## Modularity Implementation Approach
 
@@ -261,65 +195,3 @@ At the time of writing, Besu was divided into many different gradle projects. Ea
 - **ethereum** - this is where ethereum protocols are implemented. All clients likely have implementations analogous to those found in this module. Are ethstats and evmtool specific to Besu, or are they implementing a spec that is common across clients? What is the scope of retesteth and referencetests?
 - **error-prone** - project specific rules to be enforced by the errorprone compiler.
 - **pki** - a layer of abstraction up from cryptography. This module handles dealing with keystores and certificates, likely used by PoA networks.
-
-## Besu as a Modular Client for the Merge (OLD)
-
-> [!NOTE]
-> This is an older design document written around the time of The Merge. It is preserved for historical context.
-
-Considerations for this work:
-
-The Merge is 'different'. The switch from proof-of-work to proof-of-stake changes the behavior of the client significantly. There are additional endpoints served from a new `engine` network service which are differently secured than existing json-rpc or web sockets services. Knowing when to make the switch from one to the other also does not follow the 'hard fork' strategy from previous Ethereum upgrades. Also, presumably only Ethereum mainnet (and its test nets) would ever make this transition.
-
-Other layer1 EVM chains are unlikely to need an execution engine client. However, layer2's might. This [thread from protolambda](https://docs.google.com/document/d/1LqtQcjxx5smMF43qvkbwp3Q1dNkTev1KB0BzvbE7dSI/edit) highlights the potential for an execution engine to be leveraged in rollups. Having a clean execution engine module would likely be useful and less cluttered than trying to adapt besu to an L2 use case.
-
-Lastly, we are working on incorporating MEV strategies into besu. MEV so far seems to be only a consideration for Ethereum mainnet, and the notion of splitting the block producer role into two roles, [blockBuilder/blockProposer](https://ethresear.ch/t/proposer-block-builder-separation-friendly-fee-market-designs/9725), likely would not make sense outside of the context of Ethereum mainnet and MEV auctions.
-
-### Considerations common to both approaches
-
-- Pros
-  - The effort to modularize is underway already for the evm.
-  - This dovetails nicely with the need to have pluggable MEV strategies.
-- Risks
-  - Finding the right 'bounded context' for libraries is non-trivial.
-  - The effort of refactoring Besu into modules becomes critical-path for having a besu-based execution client.
-  - Changes the value proposition of the project - no longer is besu "an ethereum mainnet ready client". This is going to be the case post-merge anyway, but it is worth pro-actively redefining the message.
-  - Adds devops considerations for publishing modules.
-- Mitigation
-  - We can initially rely on the existing submodules for library bounds.
-  - We can continue to pursue a branch-based approach for an execution client in parallel until we have clarity and modularization.
-
-### Approach #1 "Besu as Debian"
-
-1. Split up the current monolithic besu artifact into a group of reusable libraries which are published individually.
-2. Rather than a monolithic artifact, generate distribution-specific artifacts within the project. An example of a distribution artifact might be "ethereum execution engine", "ETC mainnet ready client", "Optimistic Besu", etc.
-3. External projects that wish to leverage besu artifacts and/or build a 3rd party Besu distribution are able to leverage the published besu artifacts.
-
-This would keep besu as a central project that natively supports a variety of use-cases via use-specific distribution artifacts. This would be different from the current setup only in that there would not be a single monolithic binary.
-
-- Pros
-  - Teku can directly integrate/implement besu for its default execution engine.
-  - Enables different "distributions" of Besu, with artifacts custom tailored for individual chains, rollups, and/or applications.
-- Risks
-  - Might present some political challenges; we would have to solicit buy-in from governance and contributors for example.
-  - Would have to do distribution-specific acceptance tests for each artifact. This would require additional devops and CI plumbing.
-- Timeline
-  - ? (incremental approach)
-
-### Approach #2 "An Execution Engine Shell Project"
-
-Create a new project for the execution engine, leveraging the besu modules. Rewrite, override or extend the portions of besu necessary to deliver a lean execution client without introducing any of the Ethereum PoS merge code into besu. This would be a step in the direction of treating besu as more of a general purpose reference implementation of its libraries, rather than an "ethereum mainnet ready client".
-
-- Pros
-  - Less need to coordinate with other concerns: enterprise, other public mainnets.
-  - Submodules and functionality that are unrelated to Ethereum mainnet are just unimported.
-  - Onboarding of new engineers may be faster - no need to understand the whole codebase, just the specific rules of the execution client.
-  - Lower cyclomatic complexity would inevitably lead to better performance.
-  - A standalone execution engine could be leveraged in rollup implementations.
-  - Greater simplicity, performance, and integration with new services.
-- Cons
-  - Inevitable drift from re-implemented portions of besu, causing duplication of work for bugfixes and shared features.
-  - Likely no resources or support from besu contributors.
-  - Work on the execution engine would be split across multiple repositories.
-- Timeline
-  - 6-9 months; relies on the modularization of besu to begin in earnest.
