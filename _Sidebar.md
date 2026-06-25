@@ -25,6 +25,11 @@
 
 - [Defect Prioritization Guide](Defect-Prioritization-Guide)
 
+**Governance**
+
+- [Governance](Governance)
+- [Project Badge Status](Governance-Project-Badge-Status)
+
 **Incident Reports**
 
 - [2024-01-06 Mainnet Halting Event](Incident-Report-2024-01-06-Mainnet-Halting-Event)

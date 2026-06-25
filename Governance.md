@@ -1,0 +1,9 @@
+# Governance
+
+Besu is part of Linux Foundation Decentralized Trust and is managed under its foundation governance model (see the [LF Decentralized Trust charter](https://www.lfdecentralizedtrust.org/about/charter)).
+
+Besu is led by a set of [maintainers](https://github.com/besu-eth/besu/blob/main/MAINTAINERS.md).
+
+## Governance references
+
+- [Project Badge Status](Governance-Project-Badge-Status)
