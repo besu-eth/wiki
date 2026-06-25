@@ -14,9 +14,22 @@
 - [Devnet Testing and Tooling](Devnet-Testing-and-Tooling)
 - [Working through Hive Tests](Working-through-Hive-tests)
 
+**Developing & Conventions**
+
+- [Developing and Conventions](Developing-and-Conventions)
+- [Besu CLI Style Guide](Developing-and-Conventions-Besu-CLI-Style-Guide)
+- [Testing](Developing-and-Conventions-Testing)
+- [Logging](Developing-and-Conventions-Logging)
+- [Building from source](Developing-and-Conventions-Building-from-Source)
+
 **Project Process**
 
 - [Defect Prioritization Guide](Defect-Prioritization-Guide)
+
+**Governance**
+
+- [Governance](Governance)
+- [Project Badge Status](Governance-Project-Badge-Status)
 
 **Incident Reports**
 
@@ -34,6 +47,21 @@
 - [Testing Taskforce Brainstorming](Performance-Stability-Testing-Taskforce-Brainstorming)
 - [Q4 2022 Stability and Improvements](Performance-Stability-Q4-2022-Stability-and-Improvements)
 - [Permissioned Chain Testing](Performance-Stability-Permissioned-Chain-Testing)
+
+**Design Documents**
+
+- [Design Documents](Design-Documents)
+- [Modular Besu](Design-Documents-Modular-Besu)
+- [Refactor EVM into a Standalone Library](Design-Documents-Refactor-EVM-into-a-Standalone-Library)
+- [Bonsai Tries Design Overview](Design-Documents-Bonsai-Tries-Design-Overview)
+- [Bonsai Archive Feature](Design-Documents-Bonsai-Archive-Feature)
+- [Bonsai Archive State Proofs](Design-Documents-Bonsai-Archive-State-Proofs)
+- [Switchable Consensus Parameters](Design-Documents-Switchable-Consensus-Parameters)
+- [SECP256R1 Support](Design-Documents-SECP256R1-Support)
+- [RPC Endpoint Service](Design-Documents-RPC-Endpoint-Service)
+- [Feature Proposal Template](Design-Documents-Feature-Proposal-Template)
+- [Feature Flags](Design-Documents-Feature-Flags)
+- [CI/CD Tooling and Process](Design-Documents-CICD-Tooling-and-Process)
 
 **Programs & Mentorship**
 
