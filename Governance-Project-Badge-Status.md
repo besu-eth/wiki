@@ -25,8 +25,8 @@ contributors, organizations, and activity, see the
 ## Release
 
 Besu follows a CalVer versioning scheme (`YY.M.minor`) and ships a new release
-roughly once a month, with release candidates published in the weeks beforehand.
-Additional releases are made as needed to align with Ethereum network upgrades.
+roughly once a month. Additional releases are made as needed to align with
+Ethereum network upgrades.
 All releases are published in the
 [Besu GitHub repository](https://github.com/besu-eth/besu/releases).
 
