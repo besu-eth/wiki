@@ -31,6 +31,7 @@ Core capabilities include:
 ## Wiki navigation
 
 - [About This Wiki](About-This-Wiki)
+- [Design Documents](Design-Documents)
 - [Developing and Conventions](Developing-and-Conventions)
 - [Governance](Governance)
 - [Incident Reports](Incident-Reports)

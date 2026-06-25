@@ -61,8 +61,6 @@ Yui.
 
 ## Infrastructure
 
-## Infrastructure
-
 Besu is a LF Decentralized Trust project, developed in the open on GitHub at
 [github.com/besu-eth/besu](https://github.com/besu-eth/besu) for source control.
 Community discussion happens primarily on the Hyperledger
