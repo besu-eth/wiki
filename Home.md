@@ -41,4 +41,5 @@ Core capabilities include:
 
 ## Contributing
 
-- [First Contribution](Contributing-First-Contribution)
+- [Contributing](Contributing)
+- [Working with DCO](Contributing-Working-with-DCO)

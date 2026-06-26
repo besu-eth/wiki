@@ -19,7 +19,8 @@ The table below highlights key files and naming patterns (it is **not** exhausti
 | `_Sidebar.md` | Grouped navigation shown on every wiki page. |
 | `_Footer.md` | "This wiki is generated, edit the source repo" banner shown on every page. |
 | `About-This-Wiki.md` | What the wiki is, its Confluence origin, and how to continue the migration. |
-| `Contributing-First-Contribution.md` | Guide for first-time contributors to Besu. |
+| `Contributing.md` | Contributing landing page; points to `CONTRIBUTING.md` in the main repo. |
+| `Contributing-Working-with-DCO.md` | Signing off commits and fixing DCO check failures. |
 | `Defect-Prioritization-Guide.md` | How defects are triaged and prioritized. |
 | `Devnet-Testing-and-Tooling.md` | Devnet testing workflow and tooling. |
 | `Working-through-Hive-tests.md` | Working with the Hive test suite. |
@@ -82,8 +83,8 @@ We use a **feature-branch + pull-request** workflow. Direct pushes to `main` are
    git switch -c docs/short-description
    ```
 2. **Edit or add a page** at the repo root. Use standard GitHub-Flavored Markdown, one topic per page.
-3. **Name files for the wiki.** The filename becomes the page title and URL; use `Hyphen-Separated-Words.md`. Encode any grouping in the name (e.g. `Contributing-First-Contribution.md`).
-4. **Link between pages** using the target page's name without the extension, e.g. `[First Contribution](Contributing-First-Contribution)`. Add new pages to `_Sidebar.md` (and `Home.md` where appropriate) so they're discoverable.
+3. **Name files for the wiki.** The filename becomes the page title and URL; use `Hyphen-Separated-Words.md`. Encode any grouping in the name (e.g. `Contributing-Working-with-DCO.md`).
+4. **Link between pages** using the target page's name without the extension, e.g. `[Working with DCO](Contributing-Working-with-DCO)`. Add new pages to `_Sidebar.md` (and `Home.md` where appropriate) so they're discoverable.
 5. **Open a PR** against `main` with a clear description.
 6. **Review & merge.** Once merged, the publish workflow updates the live wiki automatically.
 
@@ -91,7 +92,7 @@ We use a **feature-branch + pull-request** workflow. Direct pushes to `main` are
 
 - **One page = one topic**, with a single `#` H1 as the title.
 - **Internal links** use bare page names (no `.md`, no leading slash) so they resolve in the rendered wiki.
-- **Flag unfinished ports** with an inline `<!-- TODO -->` when a page links to something not yet migrated (see the `Contributing-Code-Reviews` reference in the First Contribution page).
+- **Flag unfinished ports** with an inline `<!-- TODO -->` when a page links to something not yet migrated.
 
 > **Porting a page from the Confluence backup?** The origin story and step-by-step recovery instructions live in [About This Wiki](About-This-Wiki.md).
 
