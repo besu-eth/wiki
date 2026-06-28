@@ -1,12 +1,12 @@
 # Devnet Testing and Tooling
 
-The following is a guide for running as much internal testing as possible prior to an ethereum devnet. The examples below are for the Pectra hardfork, you will need to replace those assets with ones relevant to the hardfork network being tested.
+The following is a guide for running as much internal testing as possible prior to an Ethereum devnet. The examples below are for the Pectra hardfork, you will need to replace those assets with ones relevant to the hardfork network being tested.
 
 ## Kurtosis
 
 *Useful for small local interops*
 
-- Assertor tests, for example pectra devnets were at [https://raw.githubusercontent.com/ethpandaops/assertoor/refs/heads/master/playbooks/pectra-dev/kurtosis/all.yaml](https://raw.githubusercontent.com/ethpandaops/assertoor/refs/heads/master/playbooks/pectra-dev/kurtosis/all.yaml)
+- Assertor tests, for example Pectra devnets were at [https://raw.githubusercontent.com/ethpandaops/assertoor/refs/heads/master/playbooks/pectra-dev/kurtosis/all.yaml](https://raw.githubusercontent.com/ethpandaops/assertoor/refs/heads/master/playbooks/pectra-dev/kurtosis/all.yaml)
 - Setup [https://github.com/ethpandaops/ethereum-package](https://github.com/ethpandaops/ethereum-package)
 - Create a yml file, e.g. `besu-teku.yml`
 

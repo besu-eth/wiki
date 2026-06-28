@@ -26,7 +26,7 @@ Every commit message needs a line like `Signed-off-by: Your Legal Name <your-ema
 
    Then run `git c` instead of `git commit`. Most IDEs (such as IntelliJ IDEA) also have a "Sign-off commit" option in their commit dialog.
 
-If you use the GitHub web UI for commits, set your email address as public in your GitHub profile to avoid issues with `XYZ@users.noreply.github.com` placeholder emails.
+If you use the GitHub web UI for commits, make sure the `Signed-off-by` line uses the same email address as the commit author. You can use your GitHub `noreply` email address (`username@users.noreply.github.com`) if you keep your email private.
 
 ## When merging
 

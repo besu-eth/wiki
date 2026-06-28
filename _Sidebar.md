@@ -1,9 +1,5 @@
 ### [Besu Wiki](Home)
 
-**Getting Started**
-
-- [About This Wiki](About-This-Wiki)
-
 **Contributing**
 
 - [Contributing](Contributing)

@@ -1,4 +1,4 @@
-# Besu Wiki — Source Repository
+# Besu Wiki source repository
 
 This repository (`besu-eth/wiki`) is the **source of truth** for the [Besu project wiki](https://github.com/besu-eth/besu/wiki). Content is edited here through normal pull requests and then automatically published to the rendered GitHub wiki.
 
@@ -9,16 +9,15 @@ This repository (`besu-eth/wiki`) is the **source of truth** for the [Besu proje
 
 ## What's in here
 
-Each wiki page is a Markdown file at the **repository root**. This matches how GitHub renders a wiki: the page namespace is flat, and the filename *is* the page title (hyphens render as spaces, e.g. `Working-through-Hive-tests.md` → "Working through Hive tests").
+Each wiki page is a Markdown file at the **repository root**. This matches how GitHub renders a wiki: the page namespace is flat, and the filename *is* the page title (hyphens render as spaces, for example `Working-through-Hive-tests.md` becomes "Working through Hive tests").
 
 The table below highlights key files and naming patterns (it is **not** exhaustive):
 
 | File | Purpose |
 | --- | --- |
-| `Home.md` | The wiki landing page and primary index. |
+| `Home.md` | The wiki landing page, project overview, and migration guidance. |
 | `_Sidebar.md` | Grouped navigation shown on every wiki page. |
 | `_Footer.md` | "This wiki is generated, edit the source repo" banner shown on every page. |
-| `About-This-Wiki.md` | What the wiki is, its Confluence origin, and how to continue the migration. |
 | `Contributing.md` | Contributing landing page; points to `CONTRIBUTING.md` in the main repo. |
 | `Contributing-Working-with-DCO.md` | Signing off commits and fixing DCO check failures. |
 | `Defect-Prioritization-Guide.md` | How defects are triaged and prioritized. |
@@ -32,9 +31,9 @@ The table below highlights key files and naming patterns (it is **not** exhausti
 | `.github/workflows/publish-wiki.yml` | CI that publishes this content to the rendered wiki. |
 | `LICENSE` | Apache 2.0. |
 
-### The `confluenceExport` branch — backup, not content
+### The `confluenceExport` branch (backup, not content)
 
-Most of this wiki originated as a large export from a Confluence instance. That full, nested export is preserved on the [`confluenceExport`](https://github.com/besu-eth/wiki/tree/confluenceExport) branch as a **read-only backup**; `main` only contains pages that have been deliberately ported and cleaned up. The origin story and step-by-step instructions for porting more pages live in the [About This Wiki](About-This-Wiki.md) page.
+Most of this wiki originated as a large export from a Confluence instance. That full, nested export is preserved on the [`confluenceExport`](https://github.com/besu-eth/wiki/tree/confluenceExport) branch as a **read-only backup**; `main` only contains pages that have been deliberately ported and cleaned up. The origin story and step-by-step instructions for porting more pages live in [Home.md](Home.md).
 
 ---
 
@@ -60,7 +59,7 @@ Deployment runs via the [GitHub Wiki Action](https://github.com/Andrew-Chen-Wang
 3. The workflow pushes the root Markdown pages to the `besu-eth/besu` wiki backend (`.wiki.git`). Repo metadata (`README.md`, `LICENSE`, `.gitignore`, `.github/`) is ignored and never published.
 4. GitHub renders the wiki and it becomes immediately visible to end users.
 
-> **One-time setup:** because the workflow pushes to a *different* repo's wiki, the default `GITHUB_TOKEN` is not sufficient. Create a Personal Access Token with push access to the `besu-eth/besu` wiki — a fine-grained PAT scoped to `besu-eth/besu` with **Contents: Read and write** (or a classic token with `public_repo`) — and add it as `WIKI_PUBLISH_TOKEN` under the **`Production` environment** (Settings → Environments → Production), not as a plain repo secret. The publish job is bound to that environment. See the header comment in the workflow file for details.
+> **One-time setup:** because the workflow pushes to a *different* repo's wiki, the default `GITHUB_TOKEN` is not sufficient. Create a Personal Access Token with push access to the `besu-eth/besu` wiki (a fine-grained PAT scoped to `besu-eth/besu` with **Contents: Read and write**, or a classic token with `public_repo`) and add it as `WIKI_PUBLISH_TOKEN` under the **`Production` environment** (Settings → Environments → Production), not as a plain repo secret. The publish job is bound to that environment. See the header comment in the workflow file for details.
 
 ---
 
@@ -83,8 +82,8 @@ We use a **feature-branch + pull-request** workflow. Direct pushes to `main` are
    git switch -c docs/short-description
    ```
 2. **Edit or add a page** at the repo root. Use standard GitHub-Flavored Markdown, one topic per page.
-3. **Name files for the wiki.** The filename becomes the page title and URL; use `Hyphen-Separated-Words.md`. Encode any grouping in the name (e.g. `Contributing-Working-with-DCO.md`).
-4. **Link between pages** using the target page's name without the extension, e.g. `[Working with DCO](Contributing-Working-with-DCO)`. Add new pages to `_Sidebar.md` (and `Home.md` where appropriate) so they're discoverable.
+3. **Name files for the wiki.** The filename becomes the page title and URL; use `Hyphen-Separated-Words.md`. Encode any grouping in the name (for example, `Contributing-Working-with-DCO.md`).
+4. **Link between pages** using the target page's name without the extension, for example `[Working with DCO](Contributing-Working-with-DCO)`. Add new pages to `_Sidebar.md` (and `Home.md` where appropriate) so they're discoverable.
 5. **Open a PR** against `main` with a clear description.
 6. **Review & merge.** Once merged, the publish workflow updates the live wiki automatically.
 
@@ -94,7 +93,7 @@ We use a **feature-branch + pull-request** workflow. Direct pushes to `main` are
 - **Internal links** use bare page names (no `.md`, no leading slash) so they resolve in the rendered wiki.
 - **Flag unfinished ports** with an inline `<!-- TODO -->` when a page links to something not yet migrated.
 
-> **Porting a page from the Confluence backup?** The origin story and step-by-step recovery instructions live in [About This Wiki](About-This-Wiki.md).
+> **Porting a page from the Confluence backup?** The origin story and step-by-step recovery instructions live in [Home.md](Home.md).
 
 ---
 
@@ -104,8 +103,8 @@ As more pages are ported, keep them aligned with how GitHub wikis work:
 
 - **Flat namespace.** The wiki UI does not show folders; hierarchy lives in page names and in curated navigation.
 - **`Home.md`** is the landing page and top-level index.
-- **`_Sidebar.md`** provides grouped navigation shown on every page — this replaces Confluence's page tree. Keep it updated as pages are added.
-- **`_Footer.md`** shows a banner on every page warning that the wiki is generated and manual edits are overwritten — since a GitHub wiki cannot be made read-only for collaborators.
+- **`_Sidebar.md`** provides grouped navigation shown on every page. This replaces Confluence's page tree. Keep it updated as pages are added.
+- **`_Footer.md`** shows a banner on every page warning that the wiki is generated and manual edits are overwritten, since a GitHub wiki cannot be made read-only for collaborators.
 - **Spaces vs. hyphens:** GitHub maps `-` in filenames to spaces in titles, so prefer hyphenated names over literal spaces.
 
 ---

@@ -53,11 +53,9 @@ Besu maintains a [documentation site](https://docs.besu-eth.org/) created using 
 
 The [Besu main wiki page](Home) lists the main use cases and specific features.
 
-As a standard Ethereum client, Besu interacts with all other Linux Foundation
-Decentralized Trust (LF Decentralized Trust) projects that interface with
-Ethereum, specifically Avalon, Cactus, and Caliper. Besu also works with a
-number of Labs projects, such as Firefly, Blockchain Automation Framework, and
-Yui.
+As a standard Ethereum client, Besu interacts with LF Decentralized Trust projects
+that interface with Ethereum, such as Cactus and Caliper. Besu also works with
+projects such as Firefly and Blockchain Automation Framework.
 
 ## Infrastructure
 
@@ -71,6 +69,6 @@ on **GitHub Actions** (see the
 [repolinter](https://github.com/todogroup/repolinter) to verify the repository
 conforms to the common repository structure.
 
-## CII
+## OpenSSF Best Practices
 
-The most recent [CII report for Besu](https://bestpractices.coreinfrastructure.org/en/projects/3174).
+The most recent [OpenSSF Best Practices report for Besu](https://www.bestpractices.dev/en/projects/3174).
