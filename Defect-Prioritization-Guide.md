@@ -46,7 +46,7 @@ When judging the severity of the bug as insignificant, as the bug does not need 
 
 | **Priority** | **Risk** | Policy (recommended actions) |
 | --- | --- | --- |
-| P1 | Very High | Picked up immediately, taking priority over that work. It may very well require the effort of more than one team member, possibly including the whole team. Target may require hot-fix release out of cycle.Alternatively notify security-besu@lists.hyperledger.org to invoke handling of the issues under HLF security policy. |
+| P1 | Very High | Picked up immediately, taking priority over that work. It may require the effort of more than one team member, possibly the whole team. Target may require hot-fix release out of cycle. Alternatively, notify `security-besu@lists.hyperledger.org` to invoke handling of the issue under the [Security Policy](Security-Policy). |
 | P2 | High | Added immediately to the top of the backlog and resolution starts as soon as logically possible. Ideally, it should be resolved before the next release, or with a hot-fix depending on testing and burn-in. Team decides who can best address the issue. |
 | P3 | Medium | Added as a priority for the next release, at the discretion of the product owner. |
 | P4 | Low | Documented. Discussed in the next planning meeting at the discretion of the product owner.Candidate for a Good First Issue for the community. |

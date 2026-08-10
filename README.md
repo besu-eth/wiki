@@ -21,6 +21,7 @@ The table below highlights key files and naming patterns (it is **not** exhausti
 | `Contributing.md` | Contributing landing page; points to `CONTRIBUTING.md` in the main repo. |
 | `Contributing-Working-with-DCO.md` | Signing off commits and fixing DCO check failures. |
 | `Defect-Prioritization-Guide.md` | How defects are triaged and prioritized. |
+| `Security.md` | How to report a security bug and who is on the Besu security list. |
 | `Devnet-Testing-and-Tooling.md` | Devnet testing workflow and tooling. |
 | `Working-through-Hive-tests.md` | Working with the Hive test suite. |
 | `EPF-project-ideas.md` | Ethereum Protocol Fellowship project ideas. |
