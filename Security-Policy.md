@@ -7,10 +7,12 @@ This page describes how to report a security issue in Besu, how we handle it, an
 If you think you have found a security vulnerability in Besu, please report it privately. Do not open a public GitHub issue.
 
 **Reporting channels:**
+Please note that the Besu project and LFDT do not currently have budget available to provide rewards for reporting security issues.
 
 1. **Email:** [`security-besu@lists.hyperledger.org`](mailto:security-besu@lists.hyperledger.org) — visible only to Besu maintainers and LF Decentralized Trust staff. Use this for reporting issues directly to Besu.
-2. **[Ethereum Bug Bounty Program](https://ethereum.org/bug-bounty/)** — visible to EF security team, who pass it onto relevant EL/CL client teams. Use this for issues that affect multiple clients on Ethereum mainnet.
-3. **Email:** [`security@hyperledger.org`](mailto:security@hyperledger.org) — broader LF Decentralized Trust security team. May be viewed by maintainers outside Besu. Use this for issues that affect LFDT projects other than Besu.
+2. **GHSA:** You can raise a GitHub Security Advisory directly on the Besu repo at https://github.com/besu-eth/besu/security/advisories - visible only to Besu maintainers and LF Decentralized Trust staff. Use this for reporting issues directly to Besu.
+3. **[Ethereum Bug Bounty Program](https://ethereum.org/bug-bounty/)** — visible to EF security team, who pass it onto relevant EL/CL client teams. Use this for issues that affect multiple clients on Ethereum mainnet. 
+4. **Email:** [`security@hyperledger.org`](mailto:security@hyperledger.org) — broader LF Decentralized Trust security team. May be viewed by maintainers outside Besu. Use this for issues that affect LFDT projects other than Besu.
 
 In your report, please include:
 - A description of the vulnerability, including as much information as possible about the impact and severity
