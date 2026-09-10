@@ -2,7 +2,7 @@
 
 This page walks through our team's tier ranking of the execution-layer (EL) EIPs proposed for **Hegotá**. It's meant as a reference for anyone who wasn't in the room when we ranked these, not a line-by-line rationale for all 37 EIPs.
 
-Our full ranking is viewable on [Forkcast](https://forkcast.org/rank/#r=S:5920,7668,7906,8250,8253,8355,8368;A:3298,7709,4758,7666,7862,8131,8151,8279;B:7979,8077,8163,8272,8374;C:2488,7807,7819,7851,7923,8115,8116,8188,8200,8298,8372;D:7645,8094,8182,8219,8304,8358)
+Our full ranking is viewable on [Forkcast](https://forkcast.org/rank/#r=S:5920,7668,7906,8250,8253,8368;A:8355,3298,7709,4758,7666,7862,8131,8151,8279;B:7979,8077,8163,8272,8374;C:2488,7807,7819,7851,7923,8115,8116,8188,8200,8298,8372;D:7645,8094,8182,8219,8304,8358)
 
 Thematically: 
 
@@ -18,13 +18,13 @@ We lean hard into 8141 and its extensions, and cleanup techdebt.
 | [7906](https://eips.ethereum.org/EIPS/eip-7906) | Part of the Frames extension package alongside EIP-8298 and EIP-8151. We think frames extensions make sense to ship for immediate use with EIP-8141|
 | [8250](https://eips.ethereum.org/EIPS/eip-8250) | Keyed Nonces for Frame Transactions | Frames-core support. |
 | [8253](https://eips.ethereum.org/EIPS/eip-8253) | Bump Nonce of Zero-Nonce Storage Accounts | State-transition cleanup that meaningfully simplifies the upcoming trie migration. Pays down techdebt|
-| [8355](https://eips.ethereum.org/EIPS/eip-8355) | ML-DSA Verification Precompiles | Post-quantum work needs to start ASAP. |
 | [8368](https://eips.ethereum.org/EIPS/eip-8368) | CPSB Recalibration for New Gas Limit | Recalibrates cumulative pricing/state-bloat controls for the new gas limit set by Glamsterdam. |
 
 ## A tier — high priority, please ship
 
 | EIP | Name | Why it's here |
 |---|---|---|
+| [8355](https://eips.ethereum.org/EIPS/eip-8355) | ML-DSA Verification Precompiles | Post-quantum work needs to start ASAP, but 3 precompiles might be a bit much. |
 | [3298](https://eips.ethereum.org/EIPS/eip-3298) | Removal of Refunds | Deletes an entire class of gas-refund metering edge cases the last fork paid for dearly. |
 | [4758](https://eips.ethereum.org/EIPS/eip-4758) | Deactivate SELFDESTRUCT | Removes the last live `SELFDESTRUCT` path — a testing hazard every future EIP otherwise has to define behavior against. Techdebt pay down. |
 | [7666](https://eips.ethereum.org/EIPS/eip-7666) | EVM-ify the Identity Precompile | Rewrites the identity precompile as EVM bytecode instead of native client code — a proof point for EVMification (EIP-8200). We like this one because it is simple, and a useful proof of concept. |
