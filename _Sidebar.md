@@ -5,9 +5,10 @@
 - [Contributing](Contributing)
 - [Working with DCO](Contributing-Working-with-DCO)
 
-** Ethereum Roadmap**
+**Roadmaps**
 
 - [Hegota Planning](hegota-eip-selection-explainer)
+- [Product Roadmap](https://docs.google.com/presentation/d/11ufHWJSwVsr0u8XXti40kdfbEZnYvUnblThDhbjn_o4/edit?usp=sharing)
 
 **Development & Testing**
 
