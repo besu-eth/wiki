@@ -25,7 +25,6 @@
 
 **Project Process**
 
-- [Security Policy](Security-Policy)
 - [Defect Prioritization Guide](Defect-Prioritization-Guide)
 
 **Governance**
