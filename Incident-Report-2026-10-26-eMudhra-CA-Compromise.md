@@ -6,7 +6,7 @@ A default Besu node is not affected and needs no action. Default means a bundled
 
 On 2026-10-17, the private keys of eight eMudhra (emSign) intermediate certificate authorities were shown to be recoverable from their public certificates. They were revoked on 2026-10-18, and browsers, operating systems and Go have since blocked them.
 
-Java does not check revocation by default, so Java runtimes need their own fix. Anyone holding one of these keys can create a certificate that Java accepts as genuine. This includes the Eclipse Temurin runtime in the Besu Docker images. 
+Java does not check revocation by default, so Java runtimes need their own fix. Anyone holding one of these keys can create a certificate that Java accepts as genuine. This includes the Eclipse Temurin runtime in the Besu Docker images.
 
 OpenJDK shipped two fixes: on 2026-10-20 it blocked the compromised intermediates and their Sectigo cross-signs (`CVE-2026-91403`), and on 2026-10-23 it removed four eMudhra and Sectigo roots (`CVE-2026-114820`). 
 
@@ -51,7 +51,7 @@ These parts of Besu are **not affected**:
 - **How Java was installed.**
   - **Docker image:** it ships Eclipse Temurin. Its trust store has the emSign ECC Root CA - G3 but no AAA Certificate Services root.
   - **Oracle and OpenJDK builds:** they include both roots.
-  - **Ubuntu and Debian packages:** Java uses `/etc/ssl/certs/java/cacerts`, which takes extra steps to update (see below).
+  - **Ubuntu and Debian packages:** Java uses `/etc/ssl/certs/java/cacerts`, which takes extra steps to update (see CVE guidance).
   - **RHEL, Fedora and others:** Java uses the operating system's certificate store.
 
 ## What an attacker could do
@@ -70,7 +70,7 @@ No exploitation has been reported.
 
 ### JSON-RPC client authentication: remove the CA flag
 
-Remove `--rpc-http-tls-ca-clients-enabled`. List trusted clients with `--rpc-http-tls-known-clients-file`, or set `--rpc-http-tls-truststore-file` to a trust store holding only your own CA. This fixes the issue, regardles of the roots Java trusts. If you must keep the flag, continue reading.
+Remove `--rpc-http-tls-ca-clients-enabled`. List trusted clients with `--rpc-http-tls-known-clients-file`, or set `--rpc-http-tls-truststore-file` to a trust store holding only your own CA. This fixes the issue, regardless of the roots Java trusts. If you must keep the flag, see How to fix your Java runtime.
 
 ### Pin certificates where Besu supports it
 
@@ -96,14 +96,13 @@ The Besu team is actively monitoring the situation and can provide further guida
 
 For Docker users, look out for a future release which will contain a patched version of the Eclipse Temurin runtime we use in the Dockerfile.
 
-
 ## References
 
 - [OpenJDK: guidance on the eMudhra certificates](https://openjdk.org/emudhra)
 - [OpenJDK vulnerability advisory, 2026-10-21](https://openjdk.org/groups/vulnerability/advisories/2026-10-21): CVE-2026-91403
 - [OpenJDK vulnerability advisory, 2026-10-24](https://openjdk.org/groups/vulnerability/advisories/2026-10-24): CVE-2026-114820
 - [OpenJDK CheckCerts.java diagnostic](https://cr.openjdk.org/~mr/CheckCerts.java)
-- [Oracle: guideance on the eMudhra certificates](https://ops.java/emudhra)
+- [Oracle: guidance on the eMudhra certificates](https://ops.java/emudhra)
 - [Oracle Security Alert Advisory: CVE-2026-91403](https://www.oracle.com/security-alerts/alert-cve-2026-91403.html)
 - [Oracle Security Alert Advisory: CVE-2026-114820](https://www.oracle.com/security-alerts/alert-cve-2026-114820.html)
 - [Mozilla bug 2083449](https://bugzilla.mozilla.org/show_bug.cgi?id=2083449): the incident record
