@@ -96,6 +96,10 @@ The Besu team is actively monitoring the situation and can provide further guida
 
 For Docker users, look out for a future release which will contain a patched version of the Eclipse Temurin runtime we use in the Dockerfile.
 
+## Special Thanks
+
+Thanks to Consensys Diligence, our security partner, for flagging this issue.
+
 ## References
 
 - [OpenJDK: guidance on the eMudhra certificates](https://openjdk.org/emudhra)
